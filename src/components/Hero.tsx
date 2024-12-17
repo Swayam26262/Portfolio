@@ -17,7 +17,7 @@ export default function Hero() {
             I am a Software Developer skilled in Django and React, with a strong passion for Artificial Intelligence and Machine Learning. I specialize in creating dynamic web applications and data-driven models, blending my technical expertise with a creative problem-solving approach. With experience in building robust projects like a feature-rich blog platform and an efficient film suggestion algorithm, I thrive on delivering innovative solutions to complex challenges.
             </p>
             <div className="flex space-x-4">
-              <a href="https://drive.google.com/file/d/1Rym0fs28vbx4IzbD4ur75kddgVakfM5J/view?usp=drive_link" target="_blank" className="btn-primary">
+              <a href="https://drive.google.com/file/d/16vS7q1RhtppqeHG4boGr_m3CI2f2-DVO/view?usp=sharing" target="_blank" className="btn-primary">
                 View Resume
               </a>
               <a href="#contact" className="btn-secondary">

@@ -42,7 +42,7 @@ export default function Hero() {
               <div className="absolute inset-0 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
               <div className="absolute inset-0 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
               <img
-                src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=500&h=500"
+                src="https://media-hosting.imagekit.io/7cf08469e4b54b92/1741677476501.jpg?Expires=1838282048&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=d3Vcn7~O6R2xyVvugE5dJbRV1fDx95yO~z949cxy126McgRmlqoUzBcWjxTdOPb~vUW3mjODK~uZfm0ofQ8cTsrLZkIszuvkCO6lh~CxtFobrvZx3~9Z6ZhpXi2XnaSywsQfKUH4d9DV9I-ZNKx15UizQo7m7sCYgcyLESE7ohYyvYVYJEQ-rOJ~5PkeycKJZyf0E59RwUmkOqqsl0UZjSkwvhGed0TKzjA0XdlKStvYNkFN2Sa4eLrrLxFDyPNH-fM5p59YlckC3H2sc0BgptWAMn-gxZnsG2X2IFv9jw0SWnmiVtC67dnLVFKOTq8zgLTnBRxnSSqN44ISsfXZEg__  "
                 alt="Developer"
                 className="relative rounded-full w-96 h-96 object-cover"
               />

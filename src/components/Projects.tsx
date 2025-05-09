@@ -1,7 +1,22 @@
-import React from 'react';
 import { ExternalLink, Github } from 'lucide-react';
 
 const projects = [
+  {
+    title: 'YT2Notes',
+    description: 'A web application that converts YouTube videos into organized study notes using AI summarization and Google OAuth for secure authentication.',
+    image: 'https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&q=80&w=1000',
+    tech: ['Django', 'React', 'Tailwind CSS', 'Google API', 'AssemblyAI'],
+    github: "https://github.com/Swayam26262/YT2Notes",
+    demo: 'https://github.com/Swayam26262/YT2Notes'
+  },
+  {
+    title: 'OAuth Notes App',
+    description: 'A full-stack note-taking application with JWT-based authentication, dark mode, and responsive design built with Django REST Framework.',
+    image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&q=80&w=1000',
+    tech: ['Django REST', 'React', 'JWT', 'Vite', 'Axios'],
+    github: 'https://github.com/Swayam26262/django-oauth-NotesApp',
+    demo: 'https://github.com/Swayam26262/django-oauth-NotesApp'
+  },
   {
     title: 'SummarizeAI',
     description: 'An AI-powered web application that generates concise summaries for YouTube videos, enabling quick grasp of content.',
@@ -11,20 +26,28 @@ const projects = [
     demo: 'https://summarizeai-grcq.onrender.com/'
   },
   {
+    title: 'Twitter Bot',
+    description: 'An automated Twitter bot built with Python that engages with users, posts content, and analyzes trends on the platform.',
+    image: 'https://images.unsplash.com/photo-1611605698335-8b1569810432?auto=format&fit=crop&q=80&w=1000',
+    tech: ['Python', 'Twitter API', 'Tweepy', 'Data Analysis'],
+    github: 'https://github.com/Swayam26262/Twitter-Bot',
+    demo: 'https://github.com/Swayam26262/Twitter-Bot'
+  },
+  {
+    title: 'EchoText',
+    description: 'A text processing application that provides various transformation and analysis features for text content.',
+    image: 'https://images.unsplash.com/photo-1541877944-ac82a091518a?auto=format&fit=crop&q=80&w=1000',
+    tech: ['Python', 'NLP', 'Text Analysis', 'Flask'],
+    github: 'https://github.com/Swayam26262/EchoText',
+    demo: 'https://github.com/Swayam26262/EchoText'
+  },
+  {
     title: 'Blogify',
     description: 'A full-featured blog web application allowing users to create, manage, and share blog posts.',
     image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=1000',
     tech: ['Django', 'SQLite', 'Tailwind CSS', 'Python'],
     github: 'https://github.com/Swayam26262/BlogApp-django',
     demo: 'https://github.com/Swayam26262/BlogApp-django'
-  },
-  {
-    title: 'CineGuide',
-    description: 'A movie recommendation system using content-based filtering, reducing search time by over 60%.',
-    image: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=1000',
-    tech: ["Python", "Collaborative Filtering", "Machine learning","Streamlit"],
-    github: 'https://github.com/Swayam26262/Movie-Recommender',
-    demo: 'https://cineguide.streamlit.app/'
   }
 ];
 

@@ -1,62 +1,40 @@
-<p align="center"><img src="https://socialify.git.ci/Swayam26262/Portfolio/image?language=1&amp;owner=1&amp;name=1&amp;stargazers=1&amp;theme=Light" alt="project-image"></p>
+# Swayam's Portfolio
 
-<p id="description">This project is a personal portfolio website built using React TypeScript and Tailwind CSS. It highlights professional skills projects and achievements providing a clean and responsive design for an engaging user experience.</p>
+A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS.
 
-<h2>🚀 Demo</h2>
+## Features
+- Responsive design
+- Project showcase
+- Skills and experience section
+- Contact information
+- Dark mode
 
-[https://swayampatil.vercel.app/](https://swayampatil.vercel.app/)
+## Technologies Used
+- Next.js 15
+- React 19
+- TypeScript
+- Tailwind CSS
+- Radix UI Components
 
-<h2>Project Screenshots:</h2>
+## Getting Started
 
-<img src="https://i.imgur.com/sX1GoWl.png" alt="project-screenshot">
-
-  
-  
-<h2>🧐 Features</h2>
-
-Here're some of the project's best features:
-
-*   Fully responsive design for mobile tablet and desktop.
-*   Clean and modern UI built with Tailwind CSS.
-*   Showcases projects skills and professional details.
-*   Fast loading speed using Vite for development.
-*   Easy customization with modular React components.
-
-<h2>🛠️ Installation Steps:</h2>
-
-<p>1. Clone the Repository:</p>
-
-```
-git clone https://github.com/Swayam26262/Portfolio.git
-```
-
-<p>2. Navigate to the project directory:</p>
-
-```
-cd Portfolio
-```
-
-<p>3. Install dependencies</p>
-
-```
+```bash
+# Install dependencies
 npm install
-```
+# or
+yarn install
+# or
+pnpm install
 
-<p>4. Start the development server</p>
-
-```
+# Run the development server
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
 ```
 
-  
-<h2>💻 Built with</h2>
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Technologies used in the project:
-
-*   React
-*   Typescript
-*   Tailwind CSS
-
-<h2>🛡️ License:</h2>
-
-This project is licensed under the MIT License
+## Deployment
+This project is configured for easy deployment on Vercel.

@@ -949,19 +949,19 @@ export default function SwayamPortfolio() {
       <footer className="border-t border-zinc-800 py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-zinc-400 text-sm sm:text-base">© 2024 Swayam Patil. All rights reserved.</div>
+            <div className="text-zinc-400 text-sm sm:text-base">© 2025 Swayam Patil. All rights reserved.</div>
             <div className="flex items-center space-x-6 sm:space-x-8">
               <Link
-                href="#"
+                href="work"
                 className="text-zinc-400 hover:text-white transition-all duration-500 text-xs sm:text-sm tracking-wide hover:scale-110"
               >
-                PRIVACY
+                WORK
               </Link>
               <Link
-                href="#"
+                href="about"
                 className="text-zinc-400 hover:text-white transition-all duration-500 text-xs sm:text-sm tracking-wide hover:scale-110"
               >
-                TERMS
+                ABOUT
               </Link>
             </div>
           </div>

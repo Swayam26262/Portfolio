@@ -28,6 +28,7 @@ import {
   Palette,
   Terminal,
   MonitorSmartphone,
+  ExternalLink,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -494,9 +495,9 @@ export default function SwayamPortfolio() {
         </button>
       </section>
 
-      {/* Enhanced Featured Work Section */}
+      {/* Simplified Work Section */}
       <section id="work" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8" data-animate>
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div
             className={`text-center mb-16 sm:mb-20 transition-all duration-1000 ${visibleElements.has("work") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
@@ -507,88 +508,77 @@ export default function SwayamPortfolio() {
               SELECTED WORK
             </h2>
             <p className="text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto font-light px-4" data-stagger>
-              A curated collection of projects showcasing full-stack development, AI/ML integration, and modern web
-              technologies.
+              A curated collection of projects showcasing full-stack development and AI integration.
             </p>
           </div>
 
-          <div className="space-y-20 sm:space-y-32">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {projects.map((project, index) => (
               <div
                 key={index}
                 className={`group transition-all duration-1000 ${visibleElements.has("work") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"}`}
-                style={{ transitionDelay: `${index * 200}ms` }}
+                style={{ transitionDelay: `${index * 150}ms` }}
                 data-stagger
               >
-                <div
-                  className={`grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center ${index % 2 === 1 ? "lg:grid-flow-col-dense" : ""}`}
-                >
-                  <div className={`space-y-6 sm:space-y-8 ${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
-                    <div className="space-y-4">
-                      <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-                        <Badge
-                          variant="outline"
-                          className="border-zinc-700 text-zinc-400 hover:border-white hover:text-white transition-all duration-500 hover:scale-110"
-                        >
-                          PROJECT
-                        </Badge>
-                      </div>
-                      <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light tracking-tight group-hover:text-zinc-300 transition-all duration-500">
+                <Card className="bg-zinc-900/50 border-zinc-800 hover:bg-zinc-800/50 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-white/5 overflow-hidden h-full">
+                  <div className="relative aspect-video overflow-hidden">
+                    <Image
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      width={400}
+                      height={225}
+                      className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
+                  
+                  <CardContent className="p-6 space-y-4">
+                    <div className="space-y-3">
+                      <h3 className="text-xl font-medium group-hover:text-zinc-300 transition-colors duration-300">
                         {project.title}
                       </h3>
-                      <p className="text-base sm:text-lg text-zinc-400 leading-relaxed">{project.description}</p>
+                      <p className="text-sm text-zinc-400 leading-relaxed line-clamp-3">
+                        {project.description}
+                      </p>
                     </div>
 
-                    <div className="flex flex-wrap gap-2 sm:gap-3">
-                      {project.tech.map((tech, techIndex) => (
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.slice(0, 3).map((tech, techIndex) => (
                         <Badge
                           key={tech}
                           variant="secondary"
-                          className="bg-zinc-800 text-zinc-300 hover:bg-zinc-700 transition-all duration-500 hover:scale-105 sm:hover:scale-110 hover:rotate-3 text-xs sm:text-sm"
-                          style={{ animationDelay: `${techIndex * 0.1}s` }}
+                          className="bg-zinc-800 text-zinc-300 hover:bg-zinc-700 transition-all duration-300 text-xs"
                         >
                           {tech}
                         </Badge>
                       ))}
+                      {project.tech.length > 3 && (
+                        <Badge
+                          variant="secondary"
+                          className="bg-zinc-800 text-zinc-300 text-xs"
+                        >
+                          +{project.tech.length - 3}
+                        </Badge>
+                      )}
                     </div>
 
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 pt-4">
-                      <Button
-                        variant="ghost"
-                        className="text-white hover:bg-zinc-800 p-0 group/btn transition-all duration-500 text-sm sm:text-base"
-                        asChild
+                    <div className="flex items-center justify-between pt-2">
+                      <Link
+                        href={project.demo}
+                        className="flex items-center text-sm text-zinc-400 hover:text-white transition-colors duration-300 group/link"
                       >
-                        <Link href={project.demo}>
-                          <span className="mr-2">VIEW PROJECT</span>
-                          <ArrowUpRight className="h-4 w-4 group-hover/btn:translate-x-2 group-hover/btn:-translate-y-2 transition-transform duration-500" />
-                        </Link>
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="hover:bg-zinc-800 hover:scale-110 sm:hover:scale-125 hover:rotate-12 transition-all duration-500"
-                        asChild
+                        <span className="mr-2">View Project</span>
+                        <ExternalLink className="h-3 w-3 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform duration-300" />
+                      </Link>
+                      <Link
+                        href={project.github}
+                        className="p-2 text-zinc-400 hover:text-white hover:bg-zinc-800 rounded-full transition-all duration-300 hover:scale-110"
                       >
-                        <Link href={project.github}>
-                          <Github className="h-4 w-4 sm:h-5 sm:w-5" />
-                        </Link>
-                      </Button>
+                        <Github className="h-4 w-4" />
+                      </Link>
                     </div>
-                  </div>
-
-                  <div className={`relative ${index % 2 === 1 ? "lg:col-start-1" : ""}`}>
-                    <div className="aspect-[16/9] max-w-md mx-auto lg:max-w-full rounded-xl sm:rounded-2xl overflow-hidden bg-zinc-900 group-hover:shadow-2xl group-hover:shadow-white/10 transition-all duration-700 transform group-hover:scale-105">
-                      <Image
-                        src={project.image || "/placeholder.svg"}
-                        alt={project.title}
-                        width={600}
-                        height={340}
-                        className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-1000 ease-out"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700" />
-                    </div>
-                  </div>
-                </div>
+                  </CardContent>
+                </Card>
               </div>
             ))}
           </div>
@@ -1051,6 +1041,13 @@ export default function SwayamPortfolio() {
           button, a {
             touch-action: manipulation;
           }
+        }
+
+        .line-clamp-3 {
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
       `}</style>
     </div>

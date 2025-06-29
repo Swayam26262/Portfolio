@@ -614,14 +614,14 @@ export default function SwayamPortfolio() {
             ))}
           </div>
 
-          {/* Show More Button */}
+          {/* Show More Button - Fixed Colors */}
           {hasMoreProjects && (
             <div className="text-center mt-12 sm:mt-16">
               <Button
                 onClick={() => setShowAllProjects(!showAllProjects)}
-                variant="outline"
+                variant="ghost"
                 size="lg"
-                className={`border-zinc-700 text-white hover:bg-white hover:text-zinc-950 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-white/20 group ${visibleElements.has("work") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+                className={`bg-zinc-800/50 border border-zinc-700 text-zinc-300 hover:bg-zinc-700 hover:text-white hover:border-zinc-600 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-white/10 group px-6 py-3 ${visibleElements.has("work") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
                 style={{ transitionDelay: "600ms" }}
               >
                 {showAllProjects ? (

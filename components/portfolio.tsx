@@ -31,6 +31,7 @@ import {
   ExternalLink,
   Briefcase,
   GraduationCap,
+  Plus,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -50,6 +51,7 @@ export default function SwayamPortfolio() {
   const [activeSection, setActiveSection] = useState("home")
   const [isMobile, setIsMobile] = useState(false)
   const [activeSkillTab, setActiveSkillTab] = useState("languages")
+  const [showAllProjects, setShowAllProjects] = useState(false)
   const heroRef = useRef<HTMLElement>(null)
   const observerRef = useRef<IntersectionObserver | null>(null)
 
@@ -253,6 +255,10 @@ export default function SwayamPortfolio() {
     { name: "EXPERIENCE", href: "experience" },
     { name: "CONTACT", href: "contact" },
   ]
+
+  // Get projects to display based on showAllProjects state
+  const displayedProjects = showAllProjects ? projects : projects.slice(0, 3)
+  const hasMoreProjects = projects.length > 3
 
   return (
     <div
@@ -520,7 +526,7 @@ export default function SwayamPortfolio() {
         </button>
       </section>
 
-      {/* Simplified Work Section */}
+      {/* Simplified Work Section with Show More */}
       <section id="work" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8" data-animate>
         <div className="max-w-6xl mx-auto">
           <div
@@ -538,7 +544,7 @@ export default function SwayamPortfolio() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {projects.map((project, index) => (
+            {displayedProjects.map((project, index) => (
               <div
                 key={index}
                 className={`group transition-all duration-1000 ${visibleElements.has("work") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"}`}
@@ -607,6 +613,31 @@ export default function SwayamPortfolio() {
               </div>
             ))}
           </div>
+
+          {/* Show More Button */}
+          {hasMoreProjects && (
+            <div className="text-center mt-12 sm:mt-16">
+              <Button
+                onClick={() => setShowAllProjects(!showAllProjects)}
+                variant="outline"
+                size="lg"
+                className={`border-zinc-700 text-white hover:bg-white hover:text-zinc-950 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-white/20 group ${visibleElements.has("work") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+                style={{ transitionDelay: "600ms" }}
+              >
+                {showAllProjects ? (
+                  <>
+                    Show Less
+                    <ChevronDown className="ml-2 h-4 w-4 rotate-180 group-hover:translate-y-1 transition-transform duration-300" />
+                  </>
+                ) : (
+                  <>
+                    Show More Projects
+                    <Plus className="ml-2 h-4 w-4 group-hover:rotate-90 transition-transform duration-300" />
+                  </>
+                )}
+              </Button>
+            </div>
+          )}
         </div>
       </section>
 

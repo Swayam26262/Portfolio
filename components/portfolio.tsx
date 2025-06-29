@@ -29,6 +29,8 @@ import {
   Terminal,
   MonitorSmartphone,
   ExternalLink,
+  Briefcase,
+  GraduationCap,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -75,7 +77,7 @@ export default function SwayamPortfolio() {
       setScrollY(window.scrollY)
 
       // Update active section based on scroll position
-      const sections = ["home", "work", "about", "skills", "contact"]
+      const sections = ["home", "work", "about", "skills", "experience", "contact"]
       for (const section of sections) {
         const element = document.getElementById(section)
         if (element) {
@@ -222,10 +224,33 @@ export default function SwayamPortfolio() {
     ],
   }
 
+  const timelineData = [
+    {
+      type: 'experience',
+      title: 'AI Intern',
+      organization: 'Infosys',
+      period: 'May 2024 - July 2024',
+      description: 'Developed and launched the BikeWatch application with helmet detection and bike occupancy features, enhancing user compliance and optimizing utilization. Integrated AWS S3 for efficient image storage, improved object detection accuracy using machine learning, and automated penalty calculations and notifications to streamline processes.',
+      skills: ['Computer Vision', 'AWS', 'Machine Learning'],
+      icon: Briefcase
+    },
+    {
+      type: 'education',
+      title: 'BTech in Computer Science',
+      organization: 'Shivaji University',
+      period: '2021 - 2025',
+      description: 'Pursuing a Bachelor of Technology in Computer Science and Technology at Shivaji University, Kolhapur, currently in the final year with a CGPA of 8.2 out of 10. The program provides a strong foundation in computer science, emphasizing software development and emerging technologies.',
+      skills: ['Computer Science', 'Software Development', 'Emerging Tech'],
+      grade: 'CGPA: 8.2/10',
+      icon: GraduationCap
+    }
+  ]
+
   const navItems = [
     { name: "WORK", href: "work" },
     { name: "ABOUT", href: "about" },
     { name: "SKILLS", href: "skills" },
+    { name: "EXPERIENCE", href: "experience" },
     { name: "CONTACT", href: "contact" },
   ]
 
@@ -661,143 +686,6 @@ export default function SwayamPortfolio() {
         </div>
       </section>
 
-      {/* Experience Section */}
-      <section id="experience" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8" data-animate>
-        <div className="max-w-7xl mx-auto">
-          <div
-            className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${visibleElements.has("experience") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-          >
-            <h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-tighter mb-4 sm:mb-6"
-              data-stagger
-            >
-              WORK EXPERIENCE
-            </h2>
-            <p className="text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto font-light px-4" data-stagger>
-              Professional journey and contributions
-            </p>
-          </div>
-
-          <div className={`transition-all duration-1000 ${visibleElements.has("experience") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-            {/* Experience Timeline */}
-            <div className="relative max-w-4xl mx-auto">
-              {/* Timeline Line - This will continue to the Education section */}
-              <div className="absolute left-0 sm:left-1/2 transform sm:-translate-x-1/2 h-full w-0.5 bg-zinc-700"></div>
-              
-              {/* Experience Item */}
-              <div className="relative mb-16">
-                <div className="flex flex-col sm:flex-row items-start">
-                  {/* Timeline Dot */}
-                  <div className="absolute left-0 sm:left-1/2 transform sm:-translate-x-1/2 w-5 h-5 rounded-full bg-white shadow-glow"></div>
-                  
-                  {/* Content Card - Positioned left on desktop, full width on mobile */}
-                  <div className="ml-8 sm:ml-0 sm:mr-auto sm:pr-12 sm:w-1/2 group">
-                    <div className="bg-zinc-900/30 hover:bg-zinc-800/50 border border-zinc-800 rounded-xl p-6 sm:p-8 transition-all duration-500 hover:shadow-lg hover:shadow-white/5">
-                      <div className="mb-4">
-                        <h3 className="text-xl sm:text-2xl font-medium mb-1">AI Intern</h3>
-                        <p className="text-zinc-400 text-sm sm:text-base">Infosys</p>
-                      </div>
-                      
-                      <div className="mb-4">
-                        <Badge variant="outline" className="border-zinc-700 text-zinc-400">
-                          May, 2024 - July, 2024
-                        </Badge>
-                      </div>
-                      
-                      <p className="text-zinc-300 text-sm sm:text-base leading-relaxed">
-                        Developed and launched the BikeWatch application with helmet detection and bike occupancy features, enhancing user compliance and optimizing utilization. Integrated AWS S3 for efficient image storage, improved object detection accuracy using machine learning, and automated penalty calculations and notifications to streamline processes.
-                      </p>
-                      
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        <Badge className="bg-zinc-800 text-zinc-300 hover:bg-zinc-700 transition-all duration-300 text-xs">
-                          Computer Vision
-                        </Badge>
-                        <Badge className="bg-zinc-800 text-zinc-300 hover:bg-zinc-700 transition-all duration-300 text-xs">
-                          AWS
-                        </Badge>
-                        <Badge className="bg-zinc-800 text-zinc-300 hover:bg-zinc-700 transition-all duration-300 text-xs">
-                          Machine Learning
-                        </Badge>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Education Section */}
-      <section id="education" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-zinc-900/50" data-animate>
-        <div className="max-w-7xl mx-auto">
-          <div
-            className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${visibleElements.has("education") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-          >
-            <h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-tighter mb-4 sm:mb-6"
-              data-stagger
-            >
-              EDUCATION
-            </h2>
-            <p className="text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto font-light px-4" data-stagger>
-              Academic background and qualifications
-            </p>
-          </div>
-
-          <div className={`transition-all duration-1000 ${visibleElements.has("education") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-            {/* Education Timeline - Continues from Experience section */}
-            <div className="relative max-w-4xl mx-auto">
-              {/* Timeline Line - Continuation */}
-              <div className="absolute left-0 sm:left-1/2 transform sm:-translate-x-1/2 h-full w-0.5 bg-zinc-700"></div>
-              
-              {/* Education Item */}
-              <div className="relative mb-16">
-                <div className="flex flex-col sm:flex-row items-start">
-                  {/* Timeline Dot */}
-                  <div className="absolute left-0 sm:left-1/2 transform sm:-translate-x-1/2 w-5 h-5 rounded-full bg-white shadow-glow"></div>
-                  
-                  {/* Content Card - Positioned right on desktop, full width on mobile */}
-                  <div className="ml-8 sm:ml-auto sm:pl-12 sm:w-1/2 group">
-                    <div className="bg-zinc-900/30 hover:bg-zinc-800/50 border border-zinc-800 rounded-xl p-6 sm:p-8 transition-all duration-500 hover:shadow-lg hover:shadow-white/5">
-                      <div className="mb-4">
-                        <h3 className="text-xl sm:text-2xl font-medium mb-1">BTech in Computer Science</h3>
-                        <p className="text-zinc-400 text-sm sm:text-base">Shivaji University</p>
-                      </div>
-                      
-                      <div className="mb-4">
-                        <Badge variant="outline" className="border-zinc-700 text-zinc-400">
-                          2021 - 2025
-                        </Badge>
-                        <Badge className="ml-2 bg-zinc-800 text-zinc-300">
-                          CGPA: 8.2/10
-                        </Badge>
-                      </div>
-                      
-                      <p className="text-zinc-300 text-sm sm:text-base leading-relaxed">
-                        Pursuing a Bachelor of Technology in Computer Science and Technology at Shivaji University, Kolhapur, currently in the final year with a CGPA of 8.2 out of 10. The program provides a strong foundation in computer science, emphasizing software development and emerging technologies.
-                      </p>
-                      
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        <Badge className="bg-zinc-800 text-zinc-300 hover:bg-zinc-700 transition-all duration-300 text-xs">
-                          Computer Science
-                        </Badge>
-                        <Badge className="bg-zinc-800 text-zinc-300 hover:bg-zinc-700 transition-all duration-300 text-xs">
-                          Software Development
-                        </Badge>
-                        <Badge className="bg-zinc-800 text-zinc-300 hover:bg-zinc-700 transition-all duration-300 text-xs">
-                          Emerging Tech
-                        </Badge>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Enhanced Skills Section with Devicon */}
       <section id="skills" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8" data-animate>
         <div className="max-w-7xl mx-auto">
@@ -859,8 +747,103 @@ export default function SwayamPortfolio() {
         </div>
       </section>
 
+      {/* Combined Experience & Education Timeline */}
+      <section id="experience" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-zinc-900/50" data-animate>
+        <div className="max-w-7xl mx-auto">
+          <div
+            className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${visibleElements.has("experience") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          >
+            <h2
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-tighter mb-4 sm:mb-6"
+              data-stagger
+            >
+              JOURNEY
+            </h2>
+            <p className="text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto font-light px-4" data-stagger>
+              My professional experience and educational background
+            </p>
+          </div>
+
+          <div className={`transition-all duration-1000 ${visibleElements.has("experience") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+            <div className="relative max-w-4xl mx-auto">
+              {/* Timeline Line */}
+              <div className="absolute left-4 sm:left-1/2 transform sm:-translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-white via-zinc-600 to-zinc-800"></div>
+              
+              {timelineData.map((item, index) => (
+                <div key={index} className="relative mb-12 sm:mb-16 last:mb-0">
+                  <div className={`flex flex-col ${index % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'} items-start`}>
+                    {/* Timeline Dot with Icon */}
+                    <div className="absolute left-4 sm:left-1/2 transform sm:-translate-x-1/2 w-12 h-12 rounded-full bg-zinc-900 border-2 border-white shadow-lg flex items-center justify-center z-10">
+                      <item.icon className="w-6 h-6 text-white" />
+                    </div>
+                    
+                    {/* Content Card */}
+                    <div className={`ml-20 sm:ml-0 ${index % 2 === 0 ? 'sm:mr-auto sm:pr-12' : 'sm:ml-auto sm:pl-12'} sm:w-1/2 group`}>
+                      <Card className="bg-zinc-800/30 hover:bg-zinc-800/50 border border-zinc-700 hover:border-zinc-600 rounded-xl p-6 sm:p-8 transition-all duration-500 hover:shadow-lg hover:shadow-white/5 hover:scale-105">
+                        <div className="space-y-4">
+                          {/* Header */}
+                          <div className="flex items-start justify-between">
+                            <div className="space-y-1">
+                              <div className="flex items-center gap-2">
+                                <Badge 
+                                  variant="outline" 
+                                  className={`border-zinc-600 text-xs ${
+                                    item.type === 'experience' 
+                                      ? 'text-blue-400 border-blue-400/50' 
+                                      : 'text-green-400 border-green-400/50'
+                                  }`}
+                                >
+                                  {item.type === 'experience' ? 'EXPERIENCE' : 'EDUCATION'}
+                                </Badge>
+                                {item.grade && (
+                                  <Badge className="bg-zinc-700 text-zinc-300 text-xs">
+                                    {item.grade}
+                                  </Badge>
+                                )}
+                              </div>
+                              <h3 className="text-xl sm:text-2xl font-medium text-white group-hover:text-zinc-200 transition-colors duration-300">
+                                {item.title}
+                              </h3>
+                              <p className="text-zinc-400 text-sm sm:text-base font-medium">
+                                {item.organization}
+                              </p>
+                            </div>
+                          </div>
+                          
+                          {/* Period */}
+                          <Badge variant="outline" className="border-zinc-600 text-zinc-400 w-fit">
+                            {item.period}
+                          </Badge>
+                          
+                          {/* Description */}
+                          <p className="text-zinc-300 text-sm sm:text-base leading-relaxed">
+                            {item.description}
+                          </p>
+                          
+                          {/* Skills */}
+                          <div className="flex flex-wrap gap-2 pt-2">
+                            {item.skills.map((skill, skillIndex) => (
+                              <Badge 
+                                key={skillIndex}
+                                className="bg-zinc-700 text-zinc-300 hover:bg-zinc-600 transition-all duration-300 text-xs"
+                              >
+                                {skill}
+                              </Badge>
+                            ))}
+                          </div>
+                        </div>
+                      </Card>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Enhanced Contact Section */}
-      <section id="contact" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-zinc-900/50" data-animate>
+      <section id="contact" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8" data-animate>
         <div className="max-w-4xl mx-auto text-center">
           <div
             className={`space-y-6 sm:space-y-8 mb-12 sm:mb-16 transition-all duration-1000 ${visibleElements.has("contact") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}

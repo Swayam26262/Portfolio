@@ -144,9 +144,17 @@ export default function SwayamPortfolio() {
 
   const projects = [
   {
+  title: 'FixMyResume',
+  description: 'AI‑powered resume analyzer that provides real‑time feedback, job‑description matching, and beautifully exportable templates. Built with a Django + React stack secured by JWT authentication.',
+  image: 'https://ik.imagekit.io/clttjxlvp/image.png?updatedAt=1751295100889',
+  tech: ['Django', 'Django REST', 'PostgreSQL', 'React', 'Tailwind CSS', 'Vite', 'JWT'],
+  github: 'https://github.com/Swayam26262/FixMyResume',
+  demo: 'https://fix-my-resume.vercel.app'
+  },
+  {
     title: 'YT2Notes',
     description: 'A web application that converts YouTube videos into organized study notes using AI summarization and Google OAuth for secure authentication.',
-    image: 'https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&q=80&w=1000',
+    image: 'https://ik.imagekit.io/clttjxlvp/ytnotes.png?updatedAt=1751295756952',
     tech: ['Django', 'React', 'Tailwind CSS', 'Google API', 'AssemblyAI'],
     github: "https://github.com/Swayam26262/YT2Notes",
     demo: 'https://github.com/Swayam26262/YT2Notes'
@@ -154,23 +162,15 @@ export default function SwayamPortfolio() {
   {
     title: 'OAuth Notes App',
     description: 'A full-stack note-taking application with JWT-based authentication, dark mode, and responsive design built with Django REST Framework.',
-    image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&q=80&w=1000',
+    image: 'https://ik.imagekit.io/clttjxlvp/image.png?updatedAt=1751296846815',
     tech: ['Django REST', 'React', 'JWT', 'Vite', 'Axios'],
     github: 'https://github.com/Swayam26262/django-oauth-NotesApp',
     demo: 'https://github.com/Swayam26262/django-oauth-NotesApp'
   },
   {
-    title: 'SummarizeAI',
-    description: 'An AI-powered web application that generates concise summaries for YouTube videos, enabling quick grasp of content.',
-    image: 'https://i.imgur.com/wXadzjx.jpg',
-    tech: ['Python', 'Django', 'PostgreSQL', 'Tailwind CSS'],
-    github: "https://github.com/Swayam26262/ai_summarizer_app",
-    demo: 'https://summarizeai-grcq.onrender.com/'
-  },
-  {
     title: 'Twitter Bot',
     description: 'An automated Twitter bot built with Python that engages with users, posts content, and analyzes trends on the platform.',
-    image: 'https://images.unsplash.com/photo-1611605698335-8b1569810432?auto=format&fit=crop&q=80&w=1000',
+    image: 'https://ik.imagekit.io/clttjxlvp/image.png?updatedAt=1751379012083',
     tech: ['Python', 'Twitter API', 'Tweepy', 'Data Analysis'],
     github: 'https://github.com/Swayam26262/Twitter-Bot',
     demo: 'https://github.com/Swayam26262/Twitter-Bot'
@@ -178,7 +178,7 @@ export default function SwayamPortfolio() {
   {
     title: 'EchoText',
     description: 'A text processing application that provides various transformation and analysis features for text content.',
-    image: 'https://images.unsplash.com/photo-1541877944-ac82a091518a?auto=format&fit=crop&q=80&w=1000',
+    image: 'https://ik.imagekit.io/clttjxlvp/image.png?updatedAt=1751378897774',
     tech: ['JavaScript', 'CSS', 'HTML'],
     github: 'https://github.com/Swayam26262/EchoText',
     demo: 'https://github.com/Swayam26262/EchoText'
@@ -683,7 +683,7 @@ export default function SwayamPortfolio() {
                 data-stagger
               >
                 <Image
-                  src="https://ik.imagekit.io/clttjxlvp/gibli.png?updatedAt=1748674789895"
+                  src="https://ik.imagekit.io/clttjxlvp/myimg.png?updatedAt=1751296015995"
                   alt="Swayam Patil"
                   width={300}
                   height={300}

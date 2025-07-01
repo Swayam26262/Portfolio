@@ -1,4 +1,4 @@
-# 🚀 Portfolio Website
+
 
 ![Portfolio Banner](https://socialify.git.ci/Swayam26262/Portfolio/image?custom_language=JavaScript&font=Jost&language=1&name=1&owner=1&pattern=Brick+Wall&theme=Dark)
 
@@ -6,9 +6,8 @@
 
 ### ✨ A modern, responsive portfolio website that showcases creativity and technical expertise ✨
 
-[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Portfolio-blue?style=for-the-badge)](https://your-portfolio-url.com)
-[![GitHub Stars](https://img.shields.io/github/stars/Swayam26262/Portfolio?style=for-the-badge&color=yellow)](https://github.com/Swayam26262/Portfolio/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/Swayam26262/Portfolio?style=for-the-badge&color=green)](https://github.com/Swayam26262/Portfolio/network/members)
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Portfolio-blue?style=for-the-badge)](https://swayampatil.vercel.app/)
+
 
 </div>
 

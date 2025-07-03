@@ -146,7 +146,7 @@ export default function SwayamPortfolio() {
   {
   title: 'FixMyResume',
   description: 'AI‑powered resume analyzer that provides real‑time feedback, job‑description matching, and beautifully exportable templates. Built with a Django + React stack secured by JWT authentication.',
-  image: 'https://ik.imagekit.io/clttjxlvp/image.png?updatedAt=1751295100889',
+  image: 'https://i.postimg.cc/kGzm21gQ/Screenshot-2025-06-30-202134.png',
   tech: ['Django', 'Django REST', 'PostgreSQL', 'React', 'Tailwind CSS', 'Vite', 'JWT'],
   github: 'https://github.com/Swayam26262/FixMyResume',
   demo: 'https://fix-my-resume.vercel.app'
@@ -162,7 +162,7 @@ export default function SwayamPortfolio() {
   {
     title: 'OAuth Notes App',
     description: 'A full-stack note-taking application with JWT-based authentication, dark mode, and responsive design built with Django REST Framework.',
-    image: 'https://ik.imagekit.io/clttjxlvp/image.png?updatedAt=1751296846815',
+    image: 'https://i.postimg.cc/wvWHpTKb/Screenshot-2025-06-30-205040.png',
     tech: ['Django REST', 'React', 'JWT', 'Vite', 'Axios'],
     github: 'https://github.com/Swayam26262/django-oauth-NotesApp',
     demo: 'https://github.com/Swayam26262/django-oauth-NotesApp'
@@ -170,7 +170,7 @@ export default function SwayamPortfolio() {
   {
     title: 'Twitter Bot',
     description: 'An automated Twitter bot built with Python that engages with users, posts content, and analyzes trends on the platform.',
-    image: 'https://ik.imagekit.io/clttjxlvp/image.png?updatedAt=1751379012083',
+    image: 'https://i.postimg.cc/Qd6RCYYH/Chat-GPT-Image-Jul-3-2025-08-13-40-PM.png',
     tech: ['Python', 'Twitter API', 'Tweepy', 'Data Analysis'],
     github: 'https://github.com/Swayam26262/Twitter-Bot',
     demo: 'https://github.com/Swayam26262/Twitter-Bot'
@@ -178,7 +178,7 @@ export default function SwayamPortfolio() {
   {
     title: 'EchoText',
     description: 'A text processing application that provides various transformation and analysis features for text content.',
-    image: 'https://ik.imagekit.io/clttjxlvp/image.png?updatedAt=1751378897774',
+    image: 'https://i.postimg.cc/qRB0S6F3/Screenshot-2025-07-01-193751.png',
     tech: ['JavaScript', 'CSS', 'HTML'],
     github: 'https://github.com/Swayam26262/EchoText',
     demo: 'https://github.com/Swayam26262/EchoText'
@@ -565,9 +565,11 @@ export default function SwayamPortfolio() {
                   
                   <CardContent className="p-6 space-y-4">
                     <div className="space-y-3">
-                      <h3 className="text-xl font-medium group-hover:text-zinc-300 transition-colors duration-300">
-                        {project.title}
-                      </h3>
+                      <h3
+  className="text-xl font-medium text-zinc-200 group-hover:text-zinc-300 transition-colors duration-300"
+>
+  {project.title}
+</h3>
                       <p className="text-sm text-zinc-400 leading-relaxed line-clamp-3">
                         {project.description}
                       </p>

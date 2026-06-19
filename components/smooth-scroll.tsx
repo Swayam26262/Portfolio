@@ -1,36 +1,32 @@
 "use client"
 
 import { useEffect } from "react"
+import Lenis from "lenis"
 
+/**
+ * Lenis smooth scrolling for desktop wheel/keyboard. Touch uses native scroll
+ * (smoothTouch off) so mobile stays responsive, and the whole thing is skipped
+ * under prefers-reduced-motion. The instance is exposed on window so in-page
+ * anchor navigation can route through it.
+ */
 export function SmoothScroll() {
   useEffect(() => {
-    // Add smooth scrolling behavior
-    const handleClick = (e: Event) => {
-      const target = e.target as HTMLElement
-      const href = target.getAttribute("href")
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
 
-      if (href && href.startsWith("#")) {
-        e.preventDefault()
-        const element = document.querySelector(href)
-        if (element) {
-          element.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          })
-        }
-      }
+    const lenis = new Lenis({ duration: 1.05, smoothWheel: true })
+    ;(window as unknown as { __lenis?: Lenis }).__lenis = lenis
+
+    let raf = 0
+    const loop = (time: number) => {
+      lenis.raf(time)
+      raf = requestAnimationFrame(loop)
     }
-
-    // Add event listeners to all anchor links
-    const links = document.querySelectorAll('a[href^="#"]')
-    links.forEach((link) => {
-      link.addEventListener("click", handleClick)
-    })
+    raf = requestAnimationFrame(loop)
 
     return () => {
-      links.forEach((link) => {
-        link.removeEventListener("click", handleClick)
-      })
+      cancelAnimationFrame(raf)
+      lenis.destroy()
+      ;(window as unknown as { __lenis?: Lenis }).__lenis = undefined
     }
   }, [])
 

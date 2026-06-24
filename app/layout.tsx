@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://swayampatil.vercel.app'), // TODO: update if the domain changes
   title: 'Swayam Patil — Full-Stack & AI Engineer',
   description:
-    'Full-Stack & AI Engineer building production AI products — RAG chatbots, voice agents, and full-stack SaaS. Currently at GoParkEasy, co-founding HeyReeva.',
+    'Full-Stack & AI Engineer building production AI products — RAG chatbots, voice agents, and full-stack SaaS. Currently at GoParkEasy.',
   generator: 'Next.js',
   openGraph: {
     title: 'Swayam Patil — Full-Stack & AI Engineer',

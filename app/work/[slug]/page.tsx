@@ -56,6 +56,9 @@ export default async function CaseStudyPage({
   const cs = getCaseStudy(slug)
   if (!cs) notFound()
 
+  const idx = caseStudies.findIndex((c) => c.slug === cs.slug)
+  const next = caseStudies.length > 1 ? caseStudies[(idx + 1) % caseStudies.length] : null
+
   return (
     <div className="min-h-screen bg-canvas text-ink">
       <CaseNav />
@@ -189,8 +192,27 @@ export default async function CaseStudyPage({
           </div>
         </section>
 
+        {/* Next case */}
+        {next && (
+          <TransitionLink
+            href={`/work/${next.slug}`}
+            className="group mt-16 flex items-center justify-between gap-4 rounded-3xl border border-ink/10 bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-ink/25 sm:p-8"
+          >
+            <div>
+              <div className="font-mono text-[10px] uppercase tracking-wider text-ink-mute">
+                Next case study
+              </div>
+              <div className="mt-1 font-display text-2xl font-bold tracking-tight sm:text-3xl">
+                {next.title}
+              </div>
+              <div className="mt-1 text-sm text-ink-soft">{next.tagline}</div>
+            </div>
+            <ArrowRight className="h-6 w-6 shrink-0 text-ink-mute transition-all duration-300 group-hover:translate-x-1 group-hover:text-ink" />
+          </TransitionLink>
+        )}
+
         {/* CTA */}
-        <section className="mt-20 flex flex-col items-start justify-between gap-6 rounded-3xl border border-ink/10 bg-sunken/60 p-8 sm:flex-row sm:items-center">
+        <section className="mt-12 flex flex-col items-start justify-between gap-6 rounded-3xl border border-ink/10 bg-sunken/60 p-8 sm:flex-row sm:items-center">
           <div>
             <h2 className="font-display text-2xl font-bold tracking-tight">Want the deep dive?</h2>
             <p className="mt-2 text-ink-soft">Happy to walk through the design decisions and trade-offs.</p>

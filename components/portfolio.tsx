@@ -137,22 +137,11 @@ export default function SwayamPortfolio() {
 
   const projects: Project[] = [
     {
-      title: "HeyReeva",
-      tagline: "AI voice agent SaaS for clinics",
-      description:
-        "Co-founded AI voice SaaS for dental, aesthetic, and veterinary clinics. Built on Retell AI to handle inbound calls, appointment scheduling, and FAQ responses autonomously — targeting the US clinic market.",
-      tech: ["Next.js", "Node.js", "Retell AI", "MongoDB", "Razorpay"],
-      badge: "cofounded",
-      demo: "#", // TODO: add HeyReeva live URL
-      github: "#", // TODO: add HeyReeva GitHub URL (remove if private)
-      slug: "heyreeva",
-    },
-    {
       title: "ParkBuddy",
       tagline: "RAG support bot for GoParkEasy",
       description:
-        "Production RAG chatbot using MongoDB Atlas Vector Search and the Gemini API, integrated with the AiSensy WhatsApp API to resolve real customer queries at scale and cut support-team load.",
-      tech: ["Node.js", "Atlas Vector Search", "Gemini API", "AiSensy"],
+        "Production RAG chatbot built on Google Gemini and MongoDB vector search, integrated with WhatsApp to autonomously resolve 60–70% of Tier-1 support queries in under 2 seconds and cut support-team load.",
+      tech: ["Node.js", "Google Gemini", "MongoDB Vector Search", "BullMQ", "Upstash Redis"],
       badge: "production",
       metric: "60–70% Tier-1 resolution",
       demo: "#", // TODO: add ParkBuddy case study / demo link
@@ -161,11 +150,36 @@ export default function SwayamPortfolio() {
       slug: "parkbuddy",
     },
     {
+      title: "AI Receptionist",
+      tagline: "Real-time voice AI receptionist",
+      description:
+        "Voice AI receptionist using Retell AI, GPT-4o-mini, and Gemini 2.0 Flash with LLM tool-calling for appointment booking, waitlist capture, and human escalation — plus a Next.js + Supabase dashboard for call logs, scheduling, analytics, and billing.",
+      tech: ["Next.js", "TypeScript", "Supabase", "Retell AI", "GPT-4o-mini"],
+      badge: "live",
+      metric: "<100ms hot paths",
+      demo: "#", // TODO: add AI Receptionist live URL
+      github: null,
+      slug: "ai-receptionist",
+    },
+    {
+      title: "GoParkEasy Platform",
+      tagline: "Production SaaS parking platform",
+      description:
+        "Production-grade SaaS parking platform on Next.js 15, Node.js, and MongoDB — 450+ REST APIs across a 51-collection schema with 5+ role-based access tiers and a real-time availability engine.",
+      tech: ["Next.js 15", "Node.js", "MongoDB", "Redis Streams", "Socket.io"],
+      badge: "production",
+      metric: "450+ REST APIs",
+      demo: "#", // TODO: add GoParkEasy live URL if public
+      github: null,
+      proprietary: true,
+      slug: "goparkeasy",
+    },
+    {
       title: "FixMyResume",
       tagline: "AI resume analyzer with JD matching",
       description:
-        "AI-powered resume analyzer with real-time feedback, JD matching, and exportable templates. Django REST + React, secured with JWT and PostgreSQL.",
-      tech: ["Django", "React", "PostgreSQL", "Gemini API"],
+        "AI-driven resume optimization platform leveraging Gemini + NLP to score resumes against job descriptions across 1,000+ semantic data points, raising ATS match scores by 35%. JWT-secured REST APIs and a React/Tailwind UI.",
+      tech: ["Python", "React", "PostgreSQL", "Gemini API", "NLP"],
       badge: "live",
       demo: "https://fix-my-resume.vercel.app",
       github: "https://github.com/Swayam26262/FixMyResume",
@@ -180,59 +194,22 @@ export default function SwayamPortfolio() {
       demo: null,
       github: "https://github.com/Swayam26262/YT2Notes",
     },
-    {
-      title: "GoParkEasy WhatsApp Bot",
-      tagline: "10-step WhatsApp booking flow",
-      description:
-        "Conversational WhatsApp booking flow for a live parking startup — fuel-type selection, Razorpay payments, and webhook confirmation, backed by a BullMQ job pipeline.",
-      tech: ["Node.js", "WhatsApp API", "Razorpay", "BullMQ"],
-      badge: "production",
-      demo: null,
-      github: null,
-      proprietary: true,
-      slug: "goparkeasy",
-    },
-    {
-      title: "Twitter Bot",
-      tagline: "Automated engagement & trends",
-      description:
-        "Python bot that engages users, posts content, and analyzes trends via the Twitter API.",
-      tech: ["Python", "Twitter API", "Tweepy"],
-      badge: "oss",
-      demo: null,
-      github: "https://github.com/Swayam26262/Twitter-Bot",
-    },
-    {
-      title: "EchoText",
-      tagline: "Text transformation & analysis",
-      description: "Text-processing app with transformation and analysis features.",
-      tech: ["JavaScript", "CSS", "HTML"],
-      badge: "oss",
-      demo: null,
-      github: "https://github.com/Swayam26262/EchoText",
-    },
-    {
-      title: "OAuth Notes App",
-      tagline: "Full-stack notes with JWT auth",
-      description:
-        "Full-stack note-taking app with JWT auth, dark mode, and a responsive UI on Django REST.",
-      tech: ["Django REST", "React", "JWT", "Vite"],
-      badge: "oss",
-      demo: null,
-      github: "https://github.com/Swayam26262/django-oauth-NotesApp",
-    },
   ]
 
   const skillGroups: { title: string; skills: string[] }[] = [
     { title: "Frontend", skills: ["Next.js", "React", "TypeScript", "Tailwind CSS", "HTML / CSS"] },
-    { title: "Backend", skills: ["Node.js", "Django", "Django REST", "Express.js", "BullMQ", "Redis", "WebSockets"] },
+    { title: "Backend", skills: ["Node.js", "Express.js", "Django", "BullMQ", "Redis", "WebSockets", "REST APIs"] },
     {
       title: "AI / ML",
-      skills: ["LangChain", "Atlas Vector Search", "Gemini API", "Claude API", "RAG Pipelines", "Retell AI", "TensorFlow", "Scikit-learn"],
+      skills: ["LLMs", "RAG Pipelines", "Computer Vision", "NLP", "Object Detection", "OCR", "Gemini API", "GPT-4o", "Retell AI"],
     },
-    { title: "Databases & Cloud", skills: ["MongoDB", "PostgreSQL", "Oracle", "SQL", "Docker", "Git / GitHub", "Vercel", "AWS S3"] },
-    { title: "Integrations", skills: ["Razorpay", "AiSensy / WhatsApp", "Google OAuth", "AssemblyAI", "Socket.io"] },
-    { title: "Familiar", skills: ["Python", "Java", "C++", "C", "Matplotlib", "Kaggle"] },
+    {
+      title: "ML Frameworks",
+      skills: ["PyTorch", "TensorFlow", "OpenCV", "Scikit-learn", "YOLOv5", "DeepSORT"],
+    },
+    { title: "Databases & Cloud", skills: ["MongoDB", "PostgreSQL", "Vector Search", "SQL", "Docker", "Git", "CI/CD", "AWS S3", "Vercel"] },
+    { title: "Tools & Integrations", skills: ["Supabase", "Razorpay", "Socket.io", "Google Calendar", "Postman", "Upstash Redis"] },
+    { title: "Languages", skills: ["Python", "JavaScript", "SQL", "Java", "C++"] },
   ]
 
   const timeline = [
@@ -241,39 +218,54 @@ export default function SwayamPortfolio() {
       current: true,
       role: "Full-Stack & AI Engineer",
       org: "GoParkEasy",
-      period: "Oct 2024 – Present",
-      location: "Remote · Maharashtra, India",
+      period: "Nov 2025 – Present",
+      location: "Mumbai, India",
       bullets: [
-        "Built ParkBuddy, a production RAG chatbot (Atlas Vector Search + Gemini API via AiSensy/WhatsApp) that autonomously resolves 60–70% of Tier-1 support queries.",
-        "Designed a 10-step WhatsApp booking flow — fuel-type selection, Razorpay payments, webhook confirmation — live for real users.",
-        "Built a real-time valet dashboard with Redis Streams and Socket.io for live status across booking states.",
-        "Shipped frontend from Figma in Next.js + Tailwind, and a BullMQ async pipeline for non-blocking booking operations.",
+        "Built ParkBuddy, a RAG-based AI chatbot (Google Gemini + MongoDB vector search) that autonomously resolves 60–70% of Tier-1 support queries in under 2 seconds.",
+        "Engineered a multi-tier caching system (Upstash Redis + in-memory LRU) informed by Python/SQL EDA, cutting database load by 10–20%.",
+        "Led a fault-tolerant async job pipeline with BullMQ processing 1000+ booking events/day with ~40% fewer manual processing errors.",
+        "Shipped real-time availability updates with Redis Streams and WebSockets, eliminating polling for 100+ concurrent users.",
       ],
-      stack: ["Next.js", "Node.js", "MongoDB", "Redis", "BullMQ", "Gemini API", "Atlas Vector Search", "Razorpay"],
+      stack: ["Node.js", "Google Gemini", "MongoDB Vector Search", "BullMQ", "Upstash Redis", "Redis Streams", "WebSockets"],
     },
     {
       type: "experience" as const,
       current: false,
-      role: "AI / Computer Vision Intern",
-      org: "Infosys Springboard",
-      period: "May 2024 – July 2024",
-      location: null,
+      role: "Full-Stack Engineer · Intern",
+      org: "GoParkEasy",
+      period: "Aug 2025 – Nov 2025",
+      location: "Remote",
       bullets: [
-        "Built and launched BikeWatch — a CV pipeline for helmet detection and bike-occupancy monitoring using YOLOv5 + DeepSORT.",
-        "Integrated AWS S3 for image storage and automated penalty calculation and notification workflows.",
+        "Architected a production-grade SaaS parking platform (Next.js 15, Node.js, MongoDB) with 450+ REST APIs across a 51-collection schema and 5+ role-based access tiers.",
+        "Built a real-time availability engine with Redis Streams and Socket.io processing 100 events/5s, plus a QR-based check-in system with Puppeteer.",
+        "Resolved MongoDB indexing bottlenecks across 51 collections, boosting operational throughput by 15%.",
       ],
-      stack: ["Python", "YOLOv5", "DeepSORT", "AWS S3"],
+      stack: ["Next.js 15", "Node.js", "MongoDB", "Redis Streams", "Socket.io", "Puppeteer"],
+    },
+    {
+      type: "experience" as const,
+      current: false,
+      role: "Machine Learning Intern",
+      org: "Infosys Springboard",
+      period: "May 2024 – Jul 2024",
+      location: "Remote",
+      bullets: [
+        "Led development of BikeWatch, a production CV system using YOLOv5 + DeepSORT to flag helmet violations and triple-riding from live traffic streams, boosting enforcement efficiency by 45%.",
+        "Achieved 85% classification accuracy on a multi-rider detection module and automated violation uploads to AWS S3, cutting data-handling overhead by 60%.",
+        "Mentored a 5-member intern cohort through weekly knowledge-sharing workshops.",
+      ],
+      stack: ["Python", "YOLOv5", "DeepSORT", "OpenCV", "AWS S3"],
     },
     {
       type: "education" as const,
       current: false,
-      role: "BTech, Computer Science & Technology",
-      org: "Shivaji University, Kolhapur",
-      period: "2021 – 2025",
-      location: null,
+      role: "BTech, Computer Science & Engineering",
+      org: "Dr. D Y Patil Pratishthan's College of Engineering",
+      period: "Dec 2021 – Jun 2025",
+      location: "Kolhapur, Maharashtra",
       grade: "CGPA 8.2 / 10",
       bullets: [
-        "Final-year CSE with a strong foundation in software development, data structures, and emerging technologies.",
+        "Computer Science with a strong foundation in software development, data structures, databases, and machine learning.",
       ],
       stack: ["DSA", "Databases", "Software Development", "Machine Learning"],
     },
@@ -294,16 +286,16 @@ export default function SwayamPortfolio() {
   ]
 
   const stats = [
-    { value: "1.5+", unit: "yrs", label: "production engineering" }, // TODO: bump tenure as it grows
     { value: "60–70", unit: "%", label: "Tier-1 queries auto-resolved" },
-    { value: "2", unit: "", label: "products co-built & shipped" },
-    { value: "3+", unit: "", label: "production deployments" },
+    { value: "450+", unit: "", label: "REST APIs shipped" },
+    { value: "1000+", unit: "", label: "booking events / day" },
+    { value: "100+", unit: "", label: "concurrent users served" },
   ]
 
   const marqueeTech = [
-    "Next.js", "TypeScript", "Node.js", "Python", "RAG Pipelines", "LangChain",
-    "MongoDB Atlas", "Redis", "BullMQ", "Gemini", "Retell AI", "Django",
-    "Tailwind", "WebSockets", "Razorpay", "Docker", "Vercel",
+    "Next.js", "TypeScript", "Node.js", "Python", "RAG Pipelines", "Google Gemini",
+    "Vector Search", "Redis", "BullMQ", "GPT-4o", "Retell AI", "Supabase",
+    "PyTorch", "YOLOv5", "Socket.io", "Docker", "Vercel",
   ]
 
   const displayedProjects = showAllProjects ? projects : projects.slice(0, 5)
@@ -474,8 +466,8 @@ export default function SwayamPortfolio() {
             className="mt-7 max-w-xl animate-fade-up text-lg leading-relaxed text-ink-soft opacity-0"
             style={{ animationDelay: "0.3s" }}
           >
-            Currently at GoParkEasy and co-founding HeyReeva — shipping RAG chatbots, voice agents,
-            and full-stack SaaS for real users. I don&apos;t just call LLM APIs; I build the systems
+            Currently at GoParkEasy — shipping RAG chatbots, real-time booking systems, and
+            full-stack SaaS for real users. I don&apos;t just call LLM APIs; I build the systems
             around them.
           </p>
 
@@ -704,14 +696,16 @@ export default function SwayamPortfolio() {
               </h2>
               <div className="mt-6 space-y-4 text-lg leading-relaxed text-ink-soft">
                 <p>
-                  I&apos;m a Full-Stack and AI Engineer based in Maharashtra, India — building AI-powered
-                  features at <span className="font-medium text-ink">GoParkEasy</span> and co-founding{" "}
-                  <span className="font-medium text-ink">HeyReeva</span>, an AI voice-agent SaaS for clinics.
+                  I&apos;m a Full-Stack and AI Engineer based in Maharashtra, India — building
+                  AI-powered features and production systems at{" "}
+                  <span className="font-medium text-ink">GoParkEasy</span>, working across the stack
+                  from RAG pipelines to real-time infrastructure.
                 </p>
                 <p>
-                  I&apos;ve shipped a production RAG chatbot resolving 60–70% of Tier-1 support queries,
-                  built WhatsApp booking flows for a live startup, and designed real-time architectures
-                  with Redis Streams and BullMQ.
+                  I&apos;ve shipped a production RAG chatbot resolving 60–70% of Tier-1 support queries
+                  in under 2 seconds, architected a SaaS platform with 450+ REST APIs across a
+                  51-collection schema, and built fault-tolerant async pipelines processing 1000+
+                  booking events a day.
                 </p>
                 <p>
                   Outside work I&apos;m obsessed with what&apos;s next in AI tooling — voice agents and
@@ -856,7 +850,7 @@ export default function SwayamPortfolio() {
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-lg text-ink-soft">
               Open to full-time AI Engineer and Full-Stack roles — in India and remote. Also happy to
-              chat about freelance, collabs, or HeyReeva.
+              chat about freelance work or collaborations.
             </p>
           </div>
 

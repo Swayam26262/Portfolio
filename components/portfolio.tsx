@@ -14,6 +14,7 @@ import {
   Sun,
   Moon,
   Calendar,
+  Award,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -102,7 +103,7 @@ export default function SwayamPortfolio() {
       setScrollY(window.scrollY)
       const total = document.documentElement.scrollHeight - window.innerHeight
       setScrollProgress(total > 0 ? Math.min(100, (window.scrollY / total) * 100) : 0)
-      const sections = ["home", "work", "about", "skills", "experience", "contact"]
+      const sections = ["home", "work", "about", "skills", "certifications", "experience", "contact"]
       for (const section of sections) {
         const el = document.getElementById(section)
         if (el) {
@@ -212,6 +213,41 @@ export default function SwayamPortfolio() {
     { title: "Languages", skills: ["Python", "JavaScript", "SQL", "Java", "C++"] },
   ]
 
+  const certifications = [
+    {
+      name: "Microsoft AI & ML Engineering",
+      org: "Microsoft",
+      date: "Jun 2026",
+      credentialId: "LLE6PSJHKKIL",
+      credentialUrl: "https://www.coursera.org/account/accomplishments/specialization/LLE6PSJHKKIL",
+      skills: ["AI", "Machine Learning", "Deep Learning"],
+    },
+    {
+      name: "Data Analysis with Python",
+      org: "freeCodeCamp",
+      date: "Sep 2024",
+      credentialId: "fcc23ae7c80-0d3a-4849-9d1f-6f83ba631f49-dawp",
+      credentialUrl: "https://freecodecamp.org/certification/fcc23ae7c80-0d3a-4849-9d1f-6f83ba631f49/data-analysis-with-python-v7",
+      skills: ["Python", "Data Analysis", "Pandas", "NumPy"],
+    },
+    {
+      name: "100 Days of Code: Python Pro Bootcamp",
+      org: "Udemy",
+      date: "Sep 2024",
+      credentialUrl: null,
+      credentialId: null,
+      skills: ["Python", "Django", "Flask", "Web Development"],
+    },
+    {
+      name: "Artificial Intelligence Primer",
+      org: "Infosys Springboard",
+      date: "Mar 2024",
+      credentialUrl: null,
+      credentialId: null,
+      skills: ["AI", "Computer Vision", "Machine Learning"],
+    },
+  ]
+
   const timeline = [
     {
       type: "experience" as const,
@@ -275,8 +311,9 @@ export default function SwayamPortfolio() {
     { name: "Work", href: "work", index: "01" },
     { name: "About", href: "about", index: "02" },
     { name: "Skills", href: "skills", index: "03" },
-    { name: "Experience", href: "experience", index: "04" },
-    { name: "Contact", href: "contact", index: "05" },
+    { name: "Certifications", href: "certifications", index: "04" },
+    { name: "Experience", href: "experience", index: "05" },
+    { name: "Contact", href: "contact", index: "06" },
   ]
 
   const socials = [
@@ -286,10 +323,10 @@ export default function SwayamPortfolio() {
   ]
 
   const stats = [
-    { value: "60–70", unit: "%", label: "Tier-1 queries auto-resolved" },
-    { value: "450+", unit: "", label: "REST APIs shipped" },
-    { value: "1000+", unit: "", label: "booking events / day" },
-    { value: "100+", unit: "", label: "concurrent users served" },
+    { value: "3+", unit: "", label: "production apps built" },
+    { value: "5+", unit: "", label: "AI / ML projects" },
+    { value: "4", unit: "", label: "certifications earned" },
+    { value: "1+", unit: "yr", label: "hands-on experience" },
   ]
 
   const marqueeTech = [
@@ -320,7 +357,7 @@ export default function SwayamPortfolio() {
           scrolled ? "border-b border-ink/10 bg-nav/80 backdrop-blur-xl" : "border-b border-transparent"
         }`}
       >
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between sm:h-[72px]">
             <button onClick={() => smoothScrollTo("home")} className="group flex items-center gap-2.5">
               <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-signal font-display text-sm font-bold text-[#0d0d0f] transition-transform duration-300 group-hover:-rotate-6">
@@ -446,7 +483,7 @@ export default function SwayamPortfolio() {
           <path d="M5 40 C 25 5, 45 55, 65 25 S 105 20, 115 35" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
         </svg>
 
-        <div className="relative z-10 mx-auto w-full max-w-5xl py-16">
+        <div className="relative z-10 mx-auto w-full max-w-6xl py-16">
           <p
             className="eyebrow animate-fade-up opacity-0"
             style={{ animationDelay: "0.05s" }}
@@ -455,11 +492,11 @@ export default function SwayamPortfolio() {
           </p>
 
           <h1
-            className="mt-6 animate-slide-up font-display text-[clamp(2.25rem,8vw,7rem)] font-bold leading-[0.98] tracking-[-0.03em] opacity-0 sm:leading-[0.95]"
+            className="mt-6 animate-slide-up font-display text-[clamp(2.25rem,8vw,7rem)] font-bold leading-[1.1] tracking-[-0.03em] opacity-0 sm:leading-[1.08]"
             style={{ animationDelay: "0.12s" }}
           >
-            I build <span className="marker">AI products</span>
-            <br className="hidden sm:block" /> that actually <span className="marker">ship</span>.
+            I build <span className="marker">AI-powered</span>
+            <br className="hidden sm:block" /> products that <span className="marker">work</span>.
           </h1>
 
           <p
@@ -521,7 +558,7 @@ export default function SwayamPortfolio() {
 
       {/* Stat strip */}
       <section className="border-y border-ink/10 bg-sunken/60 px-4 sm:px-6 lg:px-8" data-animate id="stats">
-        <div className={`mx-auto grid max-w-6xl grid-cols-2 transition-all duration-700 md:grid-cols-4 ${reveal("stats")}`}>
+        <div className={`mx-auto grid max-w-7xl grid-cols-2 transition-all duration-700 md:grid-cols-4 ${reveal("stats")}`}>
           {stats.map((s, i) => (
             <div
               key={s.label}
@@ -557,12 +594,12 @@ export default function SwayamPortfolio() {
 
       {/* Work — bento */}
       <section id="work" className="px-4 py-20 sm:px-6 sm:py-28 lg:px-8" data-animate>
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-7xl">
           <div className={`mb-12 flex flex-wrap items-end justify-between gap-4 transition-all duration-700 ${reveal("work")}`}>
             <div>
               <p className="eyebrow">Selected work</p>
               <h2 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
-                Things I&apos;ve <span className="marker">shipped</span>
+                Things I&apos;ve <span className="marker">built</span>
               </h2>
             </div>
             <p className="max-w-sm text-ink-soft">
@@ -686,7 +723,7 @@ export default function SwayamPortfolio() {
 
       {/* About */}
       <section id="about" className="px-4 py-20 sm:px-6 sm:py-28 lg:px-8" data-animate>
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-7xl">
           <div className={`grid items-center gap-12 transition-all duration-700 lg:grid-cols-[1.5fr_1fr] ${reveal("about")}`}>
             <div>
               <p className="eyebrow">Who I am</p>
@@ -702,10 +739,9 @@ export default function SwayamPortfolio() {
                   from RAG pipelines to real-time infrastructure.
                 </p>
                 <p>
-                  I&apos;ve shipped a production RAG chatbot resolving 60–70% of Tier-1 support queries
-                  in under 2 seconds, architected a SaaS platform with 450+ REST APIs across a
-                  51-collection schema, and built fault-tolerant async pipelines processing 1000+
-                  booking events a day.
+                  I&apos;ve built a production RAG chatbot with Google Gemini and MongoDB vector search,
+                  architected a full-stack SaaS parking platform, and designed fault-tolerant async
+                  pipelines — always focused on making AI useful in real products, not just demos.
                 </p>
                 <p>
                   Outside work I&apos;m obsessed with what&apos;s next in AI tooling — voice agents and
@@ -739,7 +775,7 @@ export default function SwayamPortfolio() {
 
       {/* Skills */}
       <section id="skills" className="bg-sunken/50 px-4 py-20 sm:px-6 sm:py-28 lg:px-8" data-animate>
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-7xl">
           <div className={`mb-12 transition-all duration-700 ${reveal("skills")}`}>
             <p className="eyebrow">The stack</p>
             <h2 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
@@ -773,9 +809,61 @@ export default function SwayamPortfolio() {
         </div>
       </section>
 
+      {/* Certifications */}
+      <section id="certifications" className="px-4 py-20 sm:px-6 sm:py-28 lg:px-8" data-animate>
+        <div className="mx-auto max-w-7xl">
+          <div className={`mb-12 transition-all duration-700 ${reveal("certifications")}`}>
+            <p className="eyebrow">Credentials</p>
+            <h2 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
+              Certifications
+            </h2>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {certifications.map((cert, ci) => (
+              <div
+                key={cert.name}
+                className={`group rounded-2xl border border-ink/10 bg-surface p-6 transition-all duration-700 hover:-translate-y-1 hover:border-ink/30 ${reveal("certifications")}`}
+                style={{ transitionDelay: `${ci * 80}ms` }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-signal/15">
+                    <Award className="h-5 w-5 text-signal-deep dark:text-signal" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-display text-lg font-semibold tracking-tight">{cert.name}</h3>
+                    <p className="mt-0.5 font-mono text-sm text-signal-deep dark:text-signal">{cert.org}</p>
+                    <p className="mt-0.5 font-mono text-xs text-ink-mute">Issued {cert.date}</p>
+
+                    <div className="mt-3 flex flex-wrap gap-1.5">
+                      {cert.skills.map((s) => (
+                        <span key={s} className="rounded-md border border-ink/10 bg-canvas px-2 py-0.5 font-mono text-[11px] text-ink-soft">
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+
+                    {cert.credentialUrl && (
+                      <Link
+                        href={cert.credentialUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft transition-colors hover:text-ink"
+                      >
+                        View credential <ArrowUpRight className="h-3.5 w-3.5" />
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Experience */}
-      <section id="experience" className="px-4 py-20 sm:px-6 sm:py-28 lg:px-8" data-animate>
-        <div className="mx-auto max-w-6xl">
+      <section id="experience" className="bg-sunken/50 px-4 py-20 sm:px-6 sm:py-28 lg:px-8" data-animate>
+        <div className="mx-auto max-w-7xl">
           <div className={`mb-12 transition-all duration-700 ${reveal("experience")}`}>
             <p className="eyebrow">The path</p>
             <h2 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
@@ -783,7 +871,7 @@ export default function SwayamPortfolio() {
             </h2>
           </div>
 
-          <div className={`mx-auto max-w-3xl transition-all duration-700 ${reveal("experience")}`}>
+          <div className={`mx-auto max-w-4xl transition-all duration-700 ${reveal("experience")}`}>
             {timeline.map((item, i) => (
               <div key={i} className="grid grid-cols-[auto_1fr] gap-x-5 pb-10 last:pb-0">
                 <div className="flex flex-col items-center">
@@ -842,7 +930,7 @@ export default function SwayamPortfolio() {
 
       {/* Contact */}
       <section id="contact" className="px-4 py-20 sm:px-6 sm:py-28 lg:px-8" data-animate>
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           <div className={`text-center transition-all duration-700 ${reveal("contact")}`}>
             <p className="eyebrow justify-center">What&apos;s next</p>
             <h2 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-6xl">

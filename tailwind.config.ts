@@ -123,8 +123,8 @@ const config: Config = {
   				'50%': { transform: 'translateY(-10px)' }
   			},
   			'pulse-glow': {
-  				'0%, 100%': { boxShadow: '0 0 0 4px rgba(99,102,241,0.25)' },
-  				'50%': { boxShadow: '0 0 0 9px rgba(99,102,241,0.04)' }
+  				'0%, 100%': { boxShadow: '0 0 0 4px rgb(var(--signal) / 0.35)' },
+  				'50%': { boxShadow: '0 0 0 9px rgb(var(--signal) / 0.05)' }
   			},
   			blink: {
   				'0%, 100%': { opacity: '1' },

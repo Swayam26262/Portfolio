@@ -4,9 +4,7 @@ import Link from "next/link"
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
 import { Sun, Moon, ArrowUpRight, ArrowLeft } from "lucide-react"
-
-const RESUME_URL =
-  "https://drive.google.com/file/d/1P1EvdPLFmHG16GUYRoAI6XvwXH_ZdRf8/view?usp=sharing"
+import { RESUME_URL } from "@/lib/site"
 
 export function CaseNav() {
   const { theme, setTheme } = useTheme()
@@ -28,7 +26,7 @@ export function CaseNav() {
         <div className="flex items-center gap-2">
           <Link
             href="/#work"
-            className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 font-mono text-xs uppercase tracking-wide text-ink-mute transition-colors hover:text-ink"
+            className="inline-flex items-center gap-1.5 rounded-lg px-2 py-2 font-mono text-xs uppercase tracking-wide text-ink-mute transition-colors hover:text-ink sm:px-3"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             All work
@@ -48,7 +46,7 @@ export function CaseNav() {
             href={RESUME_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden items-center gap-1.5 rounded-lg bg-ink px-4 py-2 font-mono text-xs uppercase tracking-wide text-canvas transition-transform duration-200 hover:-translate-y-0.5 sm:inline-flex"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-ink px-3 py-2 font-mono text-xs uppercase tracking-wide text-canvas transition-transform duration-200 hover:-translate-y-0.5 sm:px-4"
           >
             Resume
             <ArrowUpRight className="h-3.5 w-3.5" />

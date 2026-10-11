@@ -119,7 +119,7 @@ html.lenis body {
 
   /* Mono eyebrow label */
   .eyebrow {
-    @apply inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-ink-mute;
+    @apply inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-ink-mute sm:tracking-[0.18em];
   }
   .eyebrow::before {
     content: "";

@@ -36,7 +36,7 @@ const BADGE_CLS: Record<string, string> = {
   Live: "border border-ink/20 text-ink-soft",
 }
 
-const isPlaceholder = (href?: string | null) => !href || href === "#"
+const isPlaceholder = (href?: string | null): href is null | undefined | "#" => !href || href === "#"
 
 function SectionHeader({ index, title }: { index: string; title: string }) {
   return (
@@ -95,16 +95,11 @@ export default async function CaseStudyPage({
             <div className="col-span-2 sm:col-span-1">
               <div className="font-mono text-[10px] uppercase tracking-wider text-ink-mute">Links</div>
               <div className="mt-1.5 flex items-center gap-4">
-                {cs.demo &&
-                  (isPlaceholder(cs.demo) ? (
-                    <span className="inline-flex cursor-not-allowed items-center gap-1.5 text-sm text-ink-mute" title="Link coming soon">
-                      Visit <ArrowUpRight className="h-3.5 w-3.5" />
-                    </span>
-                  ) : (
-                    <a href={cs.demo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft transition-colors hover:text-ink">
-                      Visit <ArrowUpRight className="h-3.5 w-3.5" />
-                    </a>
-                  ))}
+                {!isPlaceholder(cs.demo) && (
+                  <a href={cs.demo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft transition-colors hover:text-ink">
+                    Visit <ArrowUpRight className="h-3.5 w-3.5" />
+                  </a>
+                )}
                 {cs.github ? (
                   <a href={cs.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft transition-colors hover:text-ink">
                     <Github className="h-3.5 w-3.5" /> Code
@@ -133,7 +128,7 @@ export default async function CaseStudyPage({
         <section className="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink/10 bg-ink/10 sm:grid-cols-4">
           {cs.metrics.map((m) => (
             <div key={m.label} className="bg-canvas p-5">
-              <div className="font-display text-3xl font-bold tracking-tight">
+              <div className="whitespace-nowrap font-display text-2xl font-bold tracking-tight sm:text-3xl">
                 <CountUp value={m.value} />
               </div>
               <div className="mt-1.5 font-mono text-[11px] uppercase leading-snug tracking-wider text-ink-mute">
@@ -217,7 +212,7 @@ export default async function CaseStudyPage({
             <h2 className="font-display text-2xl font-bold tracking-tight">Want the deep dive?</h2>
             <p className="mt-2 text-ink-soft">Happy to walk through the design decisions and trade-offs.</p>
           </div>
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex shrink-0 flex-wrap items-center gap-3">
             <TransitionLink
               href="/#work"
               className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-6 py-3 font-medium text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-ink/50"
@@ -237,8 +232,8 @@ export default async function CaseStudyPage({
         </section>
       </main>
 
-      <footer className="border-t border-ink/10 px-4 py-10 sm:px-6">
-        <div className="mx-auto max-w-4xl font-mono text-xs text-ink-mute">
+      <footer className="border-t border-ink/10 py-10">
+        <div className="mx-auto max-w-4xl px-4 font-mono text-xs text-ink-mute sm:px-6">
           © {new Date().getFullYear()} Swayam Patil
         </div>
       </footer>

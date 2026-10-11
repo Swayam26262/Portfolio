@@ -23,27 +23,17 @@ import { TransitionLink } from "@/components/transition-link"
 import { CountUp } from "@/components/count-up"
 import { MagneticButton } from "@/components/magnetic-button"
 import { TiltCard } from "@/components/tilt-card"
+import { RESUME_URL } from "@/lib/site"
 
-const RESUME_URL =
-  "https://drive.google.com/file/d/1P1EvdPLFmHG16GUYRoAI6XvwXH_ZdRf8/view?usp=sharing"
 const CALENDLY_URL = "#" // TODO: add your Calendly (or other scheduling) link
 
-const isPlaceholderLink = (href?: string | null) => !href || href === "#"
+// "#" marks a link that isn't ready yet — those are hidden rather than shown as dead links
+const isPlaceholderLink = (href?: string | null): href is null | undefined | "#" => !href || href === "#"
 
-function ProjectLink({ href, children }: { href?: string | null; children: React.ReactNode }) {
-  if (isPlaceholderLink(href)) {
-    return (
-      <span
-        title="Link coming soon"
-        className="inline-flex cursor-not-allowed items-center gap-1.5 text-sm text-ink-mute"
-      >
-        {children}
-      </span>
-    )
-  }
+function ProjectLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <Link
-      href={href as string}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
       className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft transition-colors hover:text-ink"
@@ -117,6 +107,8 @@ export default function SwayamPortfolio() {
     }
 
     window.addEventListener("scroll", handleScroll, { passive: true })
+    // sync nav/progress state when the page loads mid-scroll (refresh, back nav, #hash)
+    handleScroll()
 
     observerRef.current = new IntersectionObserver(
       (entries) => {
@@ -135,6 +127,13 @@ export default function SwayamPortfolio() {
       observerRef.current?.disconnect()
     }
   }, [])
+
+  useEffect(() => {
+    if (!isMenuOpen) return
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setIsMenuOpen(false)
+    window.addEventListener("keydown", onKey)
+    return () => window.removeEventListener("keydown", onKey)
+  }, [isMenuOpen])
 
   const projects: Project[] = [
     {
@@ -322,6 +321,13 @@ export default function SwayamPortfolio() {
     { icon: Mail, href: "mailto:patilswayam96@gmail.com", label: "Email" },
   ]
 
+  const contactLinks = [
+    { icon: Mail, label: "Email", value: "patilswayam96@gmail.com", href: "mailto:patilswayam96@gmail.com" },
+    { icon: Linkedin, label: "LinkedIn", value: "/in/swayampatil", href: "https://www.linkedin.com/in/swayampatil/" },
+    { icon: Github, label: "GitHub", value: "/Swayam26262", href: "https://github.com/Swayam26262" },
+    { icon: Calendar, label: "Schedule", value: "Book a call", href: CALENDLY_URL },
+  ].filter((c) => !isPlaceholderLink(c.href))
+
   const stats = [
     { value: "3+", unit: "", label: "production apps built" },
     { value: "5+", unit: "", label: "AI / ML projects" },
@@ -417,6 +423,8 @@ export default function SwayamPortfolio() {
                 className="flex h-9 w-9 items-center justify-center rounded-lg border border-ink/10 lg:hidden"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle menu"
+                aria-expanded={isMenuOpen}
+                aria-controls="mobile-menu"
               >
                 <div className="relative h-4 w-5">
                   <span className={`absolute left-0 top-0.5 h-0.5 w-5 bg-ink transition-all duration-300 ${isMenuOpen ? "top-2 rotate-45" : ""}`} />
@@ -430,6 +438,8 @@ export default function SwayamPortfolio() {
 
         {/* Mobile overlay */}
         <div
+          id="mobile-menu"
+          inert={!isMenuOpen}
           className={`absolute left-0 top-full w-full border-b border-ink/10 bg-nav/95 backdrop-blur-xl transition-all duration-300 lg:hidden ${
             isMenuOpen ? "opacity-100" : "pointer-events-none -translate-y-3 opacity-0"
           }`}
@@ -479,7 +489,7 @@ export default function SwayamPortfolio() {
         <svg className="pointer-events-none absolute right-[8%] top-[22%] hidden h-16 w-16 text-ink/20 lg:block" viewBox="0 0 100 100" fill="none" aria-hidden>
           <path d="M50 5 L58 42 L95 50 L58 58 L50 95 L42 58 L5 50 L42 42 Z" fill="currentColor" />
         </svg>
-        <svg className="pointer-events-none absolute left-[6%] bottom-[24%] hidden h-20 w-24 text-signal lg:block" viewBox="0 0 120 60" fill="none" aria-hidden>
+        <svg className="pointer-events-none absolute right-[12%] bottom-[20%] hidden h-20 w-24 text-signal lg:block" viewBox="0 0 120 60" fill="none" aria-hidden>
           <path d="M5 40 C 25 5, 45 55, 65 25 S 105 20, 115 35" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
         </svg>
 
@@ -562,8 +572,13 @@ export default function SwayamPortfolio() {
           {stats.map((s, i) => (
             <div
               key={s.label}
-              className={`px-2 py-8 sm:py-10 ${i !== 0 ? "border-l border-ink/10" : ""} ${
-                i === 2 ? "border-l-0 md:border-l" : ""
+              className={`border-ink/10 py-8 sm:py-10 ${
+                [
+                  "pr-4",
+                  "border-l px-4 sm:px-6",
+                  "border-t pr-4 md:border-l md:border-t-0 md:px-6",
+                  "border-l border-t px-4 sm:px-6 md:border-t-0",
+                ][i]
               }`}
             >
               <div className="font-display text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
@@ -679,7 +694,7 @@ export default function SwayamPortfolio() {
                           Case study <ArrowRight className="h-3.5 w-3.5" />
                         </TransitionLink>
                       )}
-                      {project.demo && (
+                      {!isPlaceholderLink(project.demo) && (
                         <ProjectLink href={project.demo}>
                           Visit <ArrowUpRight className="h-3.5 w-3.5" />
                         </ProjectLink>
@@ -758,12 +773,12 @@ export default function SwayamPortfolio() {
             <div className="flex justify-center lg:justify-end">
               <div className="relative">
                 <div className="absolute -bottom-4 -right-4 h-full w-full rounded-3xl bg-signal" aria-hidden />
-                <div className="relative h-64 w-64 overflow-hidden rounded-3xl border border-ink/10 bg-sunken sm:h-72 sm:w-72">
+                <div className="relative h-64 w-64 overflow-hidden rounded-3xl border border-ink/10 bg-white sm:h-72 sm:w-72">
                   <Image
-                    src="https://ik.imagekit.io/clttjxlvp/myimg.png?updatedAt=1751296015995"
+                    src="/swayam-patil.jpg"
                     alt="Swayam Patil"
-                    width={320}
-                    height={320}
+                    width={800}
+                    height={800}
                     className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                   />
                 </div>
@@ -942,33 +957,27 @@ export default function SwayamPortfolio() {
             </p>
           </div>
 
-          <div className={`mt-12 grid grid-cols-1 gap-4 transition-all duration-700 sm:grid-cols-2 lg:grid-cols-4 ${reveal("contact")}`} style={{ transitionDelay: "120ms" }}>
-            {[
-              { icon: Mail, label: "Email", value: "patilswayam96@gmail.com", href: "mailto:patilswayam96@gmail.com" },
-              { icon: Linkedin, label: "LinkedIn", value: "/in/swayampatil", href: "https://www.linkedin.com/in/swayampatil/" },
-              { icon: Github, label: "GitHub", value: "/Swayam26262", href: "https://github.com/Swayam26262" },
-              { icon: Calendar, label: "Schedule", value: "Book a call", href: CALENDLY_URL },
-            ].map(({ icon: Icon, label, value, href }) => {
-              const placeholder = isPlaceholderLink(href)
-              const inner = (
-                <>
-                  <Icon className="h-5 w-5 text-ink transition-colors group-hover:text-signal-deep dark:group-hover:text-signal" />
-                  <div className="mt-3">
-                    <div className="font-mono text-[10px] uppercase tracking-wider text-ink-mute">{label}</div>
-                    <div className="mt-0.5 break-all text-sm font-medium">{placeholder ? "Coming soon" : value}</div>
-                  </div>
-                </>
-              )
-              const cls =
-                "group flex flex-col items-start rounded-2xl border border-ink/10 bg-surface p-5 text-left transition-all duration-300 hover:-translate-y-1 hover:border-ink/30"
-              return placeholder ? (
-                <div key={label} className={`${cls} cursor-not-allowed`} title="Link coming soon">{inner}</div>
-              ) : (
-                <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noopener noreferrer" : undefined} className={cls}>
-                  {inner}
-                </a>
-              )
-            })}
+          <div
+            className={`mt-12 grid grid-cols-1 gap-4 transition-all duration-700 ${
+              contactLinks.length === 4 ? "sm:grid-cols-2 lg:grid-cols-4" : "md:grid-cols-3"
+            } ${reveal("contact")}`}
+            style={{ transitionDelay: "120ms" }}
+          >
+            {contactLinks.map(({ icon: Icon, label, value, href }) => (
+              <a
+                key={label}
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                className="group flex flex-col items-start rounded-2xl border border-ink/10 bg-surface p-5 text-left transition-all duration-300 hover:-translate-y-1 hover:border-ink/30"
+              >
+                <Icon className="h-5 w-5 text-ink transition-colors group-hover:text-signal-deep dark:group-hover:text-signal" />
+                <div className="mt-3">
+                  <div className="font-mono text-[10px] uppercase tracking-wider text-ink-mute">{label}</div>
+                  <div className="mt-0.5 break-all text-sm font-medium">{value}</div>
+                </div>
+              </a>
+            ))}
           </div>
 
           <div className={`mt-10 text-center transition-all duration-700 ${reveal("contact")}`} style={{ transitionDelay: "240ms" }}>
@@ -990,7 +999,7 @@ export default function SwayamPortfolio() {
 
       {/* Footer */}
       <footer className="border-t border-ink/10 px-4 py-10 sm:px-6 lg:px-8">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 md:flex-row">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 md:flex-row">
           <div className="flex items-center gap-2.5">
             <span className="flex h-7 w-7 items-center justify-center rounded-md bg-signal font-display text-[11px] font-bold text-[#0d0d0f]">SP</span>
             <span className="font-mono text-xs text-ink-mute">© {new Date().getFullYear()} Swayam Patil</span>
